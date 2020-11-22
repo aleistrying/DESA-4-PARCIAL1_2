@@ -44,7 +44,7 @@ html {
   display: flex;
   flex-flow: column wrap;
 }
-.justify-center {
+.justify-content-center {
   justify-content: center;
 }
 .justify-content-around {
@@ -154,9 +154,9 @@ html {
   width: 150px;
   background-color: white;
 }
-/* Pagina de Presentacion */
+/* Page Presentacion */
 
-/* Pagina de FactorialSumCheck */
+/* Page FactorialSumCheck */
 
 .bg-gray {
   color: white;
@@ -165,10 +165,9 @@ html {
 
 .big-span {
   font-size: 2rem;
-  font-style: italic;
 }
 
-/* Pagina de ChanReaderCount */
+/* Page CharReaderCount */
 
 .big-table {
   font-size: 2rem;
@@ -177,4 +176,35 @@ html {
 .table-col {
   padding: 0.5rem;
   font-weight: 400;
+}
+
+/* Page MaxValuePyramid */
+.path-item {
+  font-size: 2rem;
+  padding: 0.5rem;
+  font-weight: 700;
+}
+.pyramid-item {
+  font-size: 2rem;
+  width: 5rem;
+  height: 5rem;
+}
+.pyramid-selected {
+  border: 0.1rem solid dodgerblue;
+  background-color: rgba(150, 150, 150, 0.2);
+  border-radius: 50%; /*circle*/
+}
+/*item semi repetido pero para no poner tanto texto en la pagina */
+.flex-row-centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.flex-row-even {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.pyramid {
+  width: 100%;
 }
