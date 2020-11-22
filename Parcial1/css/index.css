@@ -1,0 +1,180 @@
+/* Variables */
+:root {
+  --roundBorder: 0.2rem;
+}
+
+/* Global */
+* {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  box-sizing: border-box;
+}
+html,
+body {
+  height: 100%;
+}
+html,
+body {
+  min-height: 100%;
+}
+header {
+  min-height: 60px;
+}
+main {
+  min-height: 85%;
+}
+h1,
+ul,
+body,
+html {
+  margin: 0;
+  padding: 0;
+}
+
+/* Utils */
+.container {
+  margin: 0 auto;
+  display: block;
+  width: 80%;
+}
+.flex-row {
+  display: flex;
+  flex-flow: row wrap;
+}
+.flex-col {
+  display: flex;
+  flex-flow: column wrap;
+}
+.justify-center {
+  justify-content: center;
+}
+.justify-content-around {
+  justify-content: space-around;
+}
+.justify-content-center {
+  justify-content: center;
+}
+.justify-content-evenly {
+  justify-content: space-evenly;
+}
+.justify-content-between {
+  justify-content: space-between;
+}
+.align-items-center {
+  align-items: center;
+}
+.m-bot {
+  margin-bottom: 1rem;
+}
+.m-top {
+  margin-bottom: 1rem;
+}
+
+.list {
+  list-style: none;
+}
+.link {
+  text-decoration: none;
+  color: white;
+}
+.link:hover {
+  cursor: pointer;
+}
+.link:visited.link:link {
+  color: white;
+}
+.round-br {
+  border-bottom-right-radius: var(--roundBorder);
+}
+.round-bl {
+  border-bottom-left-radius: var(--roundBorder);
+}
+.nav-item {
+  padding: 1rem;
+  background-color: rgb(149, 147, 147);
+}
+.nav-item:hover {
+  background-color: rgb(250, 250, 250);
+  color: black;
+}
+
+.w-30 {
+  width: 30%;
+}
+.w-40 {
+  width: 40%;
+}
+.w-70 {
+  width: 70%;
+}
+
+.w-100 {
+  width: 100%;
+}
+.center {
+  text-align: center;
+}
+
+.btn-medium {
+  font-size: 1.2rem;
+}
+.btn-large {
+  font-size: 1.6rem;
+}
+.word-break {
+  word-break: break-all;
+}
+
+/* Elements */
+.form {
+  padding: 1rem;
+  margin: 1rem;
+  border: 0.1rem solid rgb(197, 197, 197);
+  border-radius: var(--roundBorder);
+}
+.nav {
+  width: 100%;
+  position: fixed;
+}
+.input {
+  padding: 0.5rem;
+  border-radius: var(--roundBorder);
+  border: none;
+  margin: 0;
+}
+.btn {
+  padding: 0.5rem;
+  color: white;
+  background-color: rgb(50, 156, 243);
+  border-radius: var(--roundBorder);
+  border: none;
+  font-weight: 500;
+  margin: 0 0.5rem;
+}
+.img {
+  width: 150px;
+  background-color: white;
+}
+/* Pagina de Presentacion */
+
+/* Pagina de FactorialSumCheck */
+
+.bg-gray {
+  color: white;
+  background-color: #333;
+}
+
+.big-span {
+  font-size: 2rem;
+  font-style: italic;
+}
+
+/* Pagina de ChanReaderCount */
+
+.big-table {
+  font-size: 2rem;
+}
+
+.table-col {
+  padding: 0.5rem;
+  font-weight: 400;
+}
