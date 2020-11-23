@@ -188,7 +188,7 @@
 
                     level = "";
                     col = 0;
-                    while (col < matrix.length){// row + 1) { 
+                    while (col <  row + 1) { 
                         //adding pathing stuff
                         if (matrix[row][col] == path[pathIndex] && row == pathIndex) { 
 
