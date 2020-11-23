@@ -11,21 +11,23 @@
             loadMaxPyramid: () => {
                 let input1 = "75 95 64 17 47 82 18 35 87 10 20 04 82 47 65 19 01 23 75 03 34 88 02 77 73 07 63 67 99 65 04 28 06 16 70 92 41 41 26 56 83 40 80 70 33 41 48 72 33 47 32 37 16 94 29 53 71 44 65 25 43 91 52 97 51 14 70 11 33 28 77 73 17 78 39 68 17 57 91 71 52 38 17 14 91 43 58 50 27 29 48 63 66 04 68 89 53 67 30 73 16 69 87 40 31 04 62 98 27 23 09 70 98 73 93 38 53 60 04 23";
                 let input2 = "3 7 4 2 4 6 8 5 9 3";
-                let matrix = App.Methods.getMatrixFromTriangle(input1);
+                let matrix = App.Methods.getMatrixFromTriangle(input2);
                 // console.log("matrix1")
                 // console.table(matrix)
                 let solvedMatrix = App.Methods.getSolvedMatrix(App.Methods.copyMatrix(matrix), 0);
-                // console.log("solved")
-                // console.table(solvedMatrix)
+                console.log("matrix2")
+                console.table(matrix)
+                console.log("solved")
+                console.table(solvedMatrix)
                 let maxLengthArr = App.Methods.getLongestPathArr(solvedMatrix, matrix);
 
+                console.log("arr", maxLengthArr)
                 App.htmlElements.path.innerHTML = App.Methods.drawPath(maxLengthArr);
                 App.htmlElements.pyramid.innerHTML = App.Methods.drawPyramid(matrix)
                 // App.htmlElements.output.innerHTML = `El factorial ${fact.toLocaleString('es-PA')} tiene una suma de: ${sum}`;
             },
             /** retorna la matriz que viene de un string de triangulo. 
              *  @param {Matrix} Matriz de Piramide a resolver.
-             *  @param {number} Orden de la matriz, accepta valores entre 0 y 1(o cualquier otro numero)
              *  @returns {Array} Matriz Bidimencional.
             */
             getMatrixFromTriangle(input) {
@@ -54,14 +56,9 @@
                     j += 1;
                 }
 
+                // console.table(matrix)
                 //making matrix
-                let max = 0;
-                i = 0;
-                //conseguir la maxima longitud de linea
-                while (i < matrix.length) {
-                    if (max < matrix[i].length) max = matrix[i].length;
-                    i++;
-                }
+                let max = matrix[matrix.length - 1].length;
 
                 i = 0;
                 //zero fill
@@ -76,7 +73,6 @@
                     }
                     i += 1;
                 }
-                // console.table(matrix)
                 return matrix;
             },
             /** Retorna la matriz resulta con el MAXIMO o MINIMO 
@@ -84,11 +80,12 @@
              *  @param {number} Orden de la matriz, accepta valores entre 0 y 1.
              *  @returns {Array} Matriz Bidimencional.
             */
-            getSolvedMatrix: (inputMatrix, orden) => {
-                if (orden == null || typeof (orden) != "number") {
-                    orden = 0;
+            getSolvedMatrix: (inputMatrix, order) => {
+                if (order == null || typeof (order) != "number") {
+                    order = 0;
+                    throw new Error("Order debe ser un numero.")
                 }
-                let newMatrix = [...inputMatrix];
+                let newMatrix = inputMatrix;
 
 
                 let row = newMatrix.length - 1, col = 0, valueOfComparison;
@@ -101,7 +98,7 @@
                         /*nos vamos a el row anterior y buscamos el
                          valor minimo en el row inferior */
 
-                        if (orden == 0) {
+                        if (order == 0) {
                             valueOfComparison = App.Methods.getMaxVal(newMatrix[row][col], newMatrix[row][col + 1])
 
                         } else {
@@ -117,11 +114,8 @@
             },
             getLongestPathArr(solvedMatrix, matrix) {
                 let pathArray = [];
-                let row = 0, col = 0, searchValue;//nos podemos saltar el primer row
-                // let searchedValueet searchedValue = solvedMatrix[0][0] - matrix[0][0];
-                // let i = 0, j = 0;
-                //colocamos el primer valor (obvio) en el path como inicio.
-                // pathArray.push(matrix[0][0]);
+                let row = 0, col = 0, searchValue;
+                //colocamos el primer valor (obvio) en el path como inicio. 
                 while (row < solvedMatrix.length) {
 
                     pathArray.push(matrix[row][col])
@@ -172,11 +166,15 @@
             drawPath: (pathArr) => {
                 let i = 0;
                 let drawnPath = "";
+                let sum = 0;
                 while (i < pathArr.length - 1) {
+                    sum += pathArr[i];
                     drawnPath += `<span class="path-item">${pathArr[i]}</span><span class="path-item">&#10148;</span>`;
                     i++;
                 }
-                drawnPath += `<span class="path-item">${pathArr[pathArr.length - 1]}</span>`;
+                drawnPath += `<span class="path-item">${pathArr[pathArr.length - 1]}</span>
+                            <span class="path-item">=</span> 
+                            <span class="path-item">${sum + pathArr[pathArr.length - 1]}</span>`;
 
                 return `${drawnPath}`;
             },

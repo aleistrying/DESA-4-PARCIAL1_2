@@ -23,8 +23,8 @@
                     console.log("err", err);
                     App.htmlElements.output.innerHTML = "Ingrese un numero valido";
                     throw new Error("Ingrese un numero valido");
-                } 
-                
+                }
+
                 //validar que sea un numero
                 if (isNaN(N)) {
                     console.log("El valor que ingreso no es numero");
@@ -55,11 +55,8 @@
             //esta funcion calcula el factorial con un while
             calcFactorial: (n) => {
                 let fact = 1;
-                console.log(n)
-                while (true) {
+                while (n != 1) {
                     //se asegura que en la ultima iteracion se salga del loop para no multiplicar por 0
-                    if (n == 1) break;
-                    console.log(n)
                     fact *= n--;
                 }
                 return fact;

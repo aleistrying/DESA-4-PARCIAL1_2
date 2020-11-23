@@ -35,7 +35,7 @@
                 let count = [],
                     keys = [],
                     i = 0;
-                while (i != val.length) {
+                while (i != val.length) { 
                     let index = keys.indexOf(val.charAt(i));
 
                     if (index == -1) {
@@ -44,7 +44,7 @@
                     } else {
                         count[index] += 1;
                     }
-                    i++;
+                    i++; 
                 }
                 console.log({ keys, count });
                 return { keys, count }
