@@ -1,6 +1,6 @@
 /* Variables */
 :root {
-  --roundBorder: 0.2rem;
+  --roundBorder: 1rem;
 }
 
 /* Global */
@@ -136,6 +136,7 @@ html {
   position: fixed;
 }
 .input {
+  font-size:1.5rem;
   padding: 0.5rem;
   border-radius: var(--roundBorder);
   border: none;
@@ -151,8 +152,9 @@ html {
   /* margin: 0 0.5rem; */
 }
 .img {
-  width: 150px;
+  width: 160px;
   background-color: white;
+  border-radius: 50%;
 }
 /* Page Presentacion */
 
@@ -164,13 +166,16 @@ html {
 }
 
 .big-span {
-  font-size: 2rem;
+  font-size: 1.5rem;
 }
 
 /* Page CharReaderCount */
 
+.big-td {
+  font-size: 1.5rem;
+}
 .big-table {
-  font-size: 2rem;
+  font-size: 1.5rem;
 }
 
 .table-col {
@@ -191,7 +196,7 @@ html {
 }
 .pyramid-selected {
   border: 0.1rem solid dodgerblue;
-  background-color: rgba(150, 150, 150, 0.2);
+  background-color: rgba(0,0,0,0.45);/*rgba(150, 150, 150, 0.2);*/
   border-radius: 50%; /*circle*/
 }
 /*item semi repetido pero para no poner tanto texto en la pagina */
@@ -208,3 +213,4 @@ html {
 .pyramid {
   width: 100%;
 }
+ 

@@ -2,7 +2,7 @@
     const App = {
         htmlElements: {
             path: document.getElementById('path'),
-            pyramid: document.getElementById('pyramid'), 
+            pyramid: document.getElementById('pyramid'),
         },
         init: () => {
             App.Methods.loadMaxPyramid();
@@ -181,16 +181,16 @@
             drawPyramid: (matrix, path) => {
 
                 let row = 0, col = 0,
-                     pathIndex = 0
-                level = "", pyramid = "";
+                    pathIndex = 0
+                level = "", pyramid = "", support = "";
 
                 while (row < matrix.length) {
-
+                    support = ""
                     level = "";
                     col = 0;
-                    while (col <  row + 1) { 
+                    while (col < row + 1) {
                         //adding pathing stuff
-                        if (matrix[row][col] == path[pathIndex] && row == pathIndex) { 
+                        if (matrix[row][col] == path[pathIndex] && row == pathIndex) {
 
                             level += ` 
                             <div class="pyramid-item pyramid-selected flex-row-centered">
@@ -209,14 +209,18 @@
                         }
                         col++;
                     }
-
-                    pyramid += "<div class='flex-row-even'>" + level + "</div>";
+                    col = 0;
+                    while ((matrix.length - row - 1) / 2 > col) {
+                        support += `<div class="pyramid-item flex-row-centered"></div>`
+                        col++;
+                    }
+                    pyramid += `<div class='flex-row-even'>${support}${level}${support}</div>`;
                     row++;
                 }
 
                 return pyramid;
-            } 
-            
+            }
+
         }
 
     }

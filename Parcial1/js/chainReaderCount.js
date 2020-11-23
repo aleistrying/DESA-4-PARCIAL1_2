@@ -22,12 +22,12 @@
                     throw new Error("Ingrese un valor")
                 }
                 let res = App.Methods.countCharMap(App.htmlElements.cadena.value);
-                let table = App.Methods.createTable(res);
+                let table = App.Methods.createTable(res);  
                 App.htmlElements.tbody.innerHTML = table;
                 App.htmlElements.thead.innerHTML = `
                 <tr class="center">
-                    <th class="table-col">valor</th>
-                    <th class="table-col">count</th>
+                    <th class="table-col">Valor</th>
+                    <th class="table-col">Cantidad</th>
                 </tr>`
             },
             countCharMap: (val) => {
