@@ -2,7 +2,7 @@
     const App = {
         htmlElements: {
             path: document.getElementById('path'),
-            pyramid: document.getElementById('pyramid')
+            pyramid: document.getElementById('pyramid'), 
         },
         init: () => {
             App.Methods.loadMaxPyramid();
@@ -11,7 +11,7 @@
             loadMaxPyramid: () => {
                 let input1 = "75 95 64 17 47 82 18 35 87 10 20 04 82 47 65 19 01 23 75 03 34 88 02 77 73 07 63 67 99 65 04 28 06 16 70 92 41 41 26 56 83 40 80 70 33 41 48 72 33 47 32 37 16 94 29 53 71 44 65 25 43 91 52 97 51 14 70 11 33 28 77 73 17 78 39 68 17 57 91 71 52 38 17 14 91 43 58 50 27 29 48 63 66 04 68 89 53 67 30 73 16 69 87 40 31 04 62 98 27 23 09 70 98 73 93 38 53 60 04 23";
                 let input2 = "3 7 4 2 4 6 8 5 9 3";
-                let matrix = App.Methods.getMatrixFromTriangle(input2);
+                let matrix = App.Methods.getMatrixFromTriangle(input1);
                 // console.log("matrix1")
                 // console.table(matrix)
                 let solvedMatrix = App.Methods.getSolvedMatrix(App.Methods.copyMatrix(matrix), 0);
@@ -23,7 +23,7 @@
 
                 console.log("arr", maxLengthArr)
                 App.htmlElements.path.innerHTML = App.Methods.drawPath(maxLengthArr);
-                App.htmlElements.pyramid.innerHTML = App.Methods.drawPyramid(matrix)
+                App.htmlElements.pyramid.innerHTML = App.Methods.drawPyramid(matrix, maxLengthArr)
                 // App.htmlElements.output.innerHTML = `El factorial ${fact.toLocaleString('es-PA')} tiene una suma de: ${sum}`;
             },
             /** retorna la matriz que viene de un string de triangulo. 
@@ -178,20 +178,35 @@
 
                 return `${drawnPath}`;
             },
-            drawPyramid: (matrix) => {
+            drawPyramid: (matrix, path) => {
 
                 let row = 0, col = 0,
-                    level = "", pyramid = "";
+                     pathIndex = 0
+                level = "", pyramid = "";
 
                 while (row < matrix.length) {
 
                     level = "";
                     col = 0;
-                    while (col < row + 1) {
-                        level += ` 
+                    while (col < matrix.length){// row + 1) { 
+                        //adding pathing stuff
+                        if (matrix[row][col] == path[pathIndex] && row == pathIndex) { 
+
+                            level += ` 
+                            <div class="pyramid-item pyramid-selected flex-row-centered">
+                            ${matrix[row][col]}
+                            </div>`;
+
+                            pathIndex++;
+                        }
+                        else {
+                            //end pathing stuff
+
+                            level += ` 
                         <div class="pyramid-item flex-row-centered">
                         ${matrix[row][col]}
                         </div>`;
+                        }
                         col++;
                     }
 
@@ -200,7 +215,8 @@
                 }
 
                 return pyramid;
-            }
+            } 
+            
         }
 
     }

@@ -3,7 +3,8 @@
         htmlElements: {
             form: document.getElementById('form'),
             cadena: document.getElementById('cadena'),
-            output: document.getElementById('output'),
+            thead: document.getElementById('thead'),
+            tbody: document.getElementById('tbody'),
         },
         init: () => {
             App.bindEvents();
@@ -16,12 +17,18 @@
                 e.preventDefault();
                 if (App.htmlElements.cadena.value == "") {
                     console.log("no ingreso valor")
-                    App.htmlElements.output.innerHTML = "Ingrese un valor";
+                    App.htmlElements.tbody.innerHTML = "Ingrese un valor";
+                    App.htmlElements.thead.innerHTML = "";
                     throw new Error("Ingrese un valor")
                 }
                 let res = App.Methods.countCharMap(App.htmlElements.cadena.value);
                 let table = App.Methods.createTable(res);
-                App.htmlElements.output.innerHTML = table;
+                App.htmlElements.tbody.innerHTML = table;
+                App.htmlElements.thead.innerHTML = `
+                <tr class="center">
+                    <th class="table-col">valor</th>
+                    <th class="table-col">count</th>
+                </tr>`
             },
             countCharMap: (val) => {
                 //ordenar alfabeticamente
@@ -35,7 +42,7 @@
                 let count = [],
                     keys = [],
                     i = 0;
-                while (i != val.length) { 
+                while (i != val.length) {
                     let index = keys.indexOf(val.charAt(i));
 
                     if (index == -1) {
@@ -44,7 +51,7 @@
                     } else {
                         count[index] += 1;
                     }
-                    i++; 
+                    i++;
                 }
                 console.log({ keys, count });
                 return { keys, count }
@@ -67,10 +74,10 @@
             bubbleSortArray: (toSort) => {
                 let i = 0, j = 0, tmp;
                 // va por todos los valores del arreglo - i que basicamente es la mitad
-                while (i < toSort.length - i) {
+                while (i < toSort.length - 1) {
                     j = 0;
                     //va por todos los valores menos 1 porque estoy comparando 2 valores y el ultimo no se compara con nulo
-                    while (j < toSort.length - 1) {
+                    while (j < toSort.length - i - 1) {
                         //si el valor actual es mayor al siguiente valor entonces se intercambian.
                         if (toSort[j] > toSort[j + 1]) {
                             tmp = toSort[j + 1]
